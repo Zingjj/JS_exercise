@@ -142,22 +142,3 @@ console.log(arr);
 let arr = [[1, 3], [2, 4]].map(([x, y]) => x + y);
 console.log(arr);
 
-/**
- * 函数声明
- */
-var objStr = "123";
-function objStr() {
-    return "456";
-}
-console.log(objStr);//123
-console.log(objStr());//TypeError: objStr is not a function
-
-/**
- * 函数表达式
- */
-var objStr = "123";
-objStr = function () {
-    return "456";
-}
-console.log(objStr);//[Function: objStr]
-console.log(objStr());//456

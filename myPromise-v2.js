@@ -3,7 +3,7 @@
  * @Email: 932455732@qq.com
  * @Date: 2020-11-27 16:17:04
  * @Last Modified by: zing
- * @Last Modified time: 2020-11-27 17:29:05
+ * @Last Modified time: 2020-11-27 22:08:11
  * @Description: 使用发布者-订阅者模式控制then方法中的回调函数执行时机
  */
 
