@@ -113,3 +113,26 @@ sayHi();
 let tmp = [];
 // tmp.reduce()
 console.log(typeof tmp);//object
+
+
+var obj = {
+    toString: function () {
+        console.log('toString')
+        return Object.prototype.toString.call(this)
+    },
+    valueOf: function () {
+        console.log('valueOf')
+        return Object.prototype.valueOf.call(this)
+    }
+}
+console.log("对象是：", obj);
+console.log("---------------");
+console.log(+obj);
+console.log("---------------");
+console.log(obj == {});
+console.log("---------------");
+console.log(obj === {})
+console.log("---------------");
+console.log(obj == 'test')
+console.log("---------------");
+console.log(obj === 'test')
