@@ -4,6 +4,10 @@
 let [a, b, c] = [0, 1, 2];
 console.log(a, b, c);
 let [a, ...b] = [10, [0, 1, 2]];
+function test(a, ...b) {
+    console.log(a, b);
+}
+test("a", "b", "c");
 console.log(b);//[[0,1,2]]
 console.log(...b);//[0,1,2]
 let [a, ...b] = [10, 1, 2, 3, 4];

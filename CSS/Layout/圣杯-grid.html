@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        min-width: 550px;
+        font-weight: bold;
+        font-size: 20px;
+        display: grid;
+    }
+
+    #header,
+    #footer {
+        background-color: wheat;
+        text-align: center;
+        height: 60px;
+        line-height: 60px;
+    }
+
+    #header {
+        grid-row: 1;
+        grid-column: 1/5;
+    }
+
+    #footer {
+        grid-row: 3;
+        grid-column: 1/5;
+    }
+
+    .column {
+        text-align: center;
+        height: 300px;
+        line-height: 300px;
+    }
+
+
+
+    #left {
+        grid-row: 2;
+        grid-column: 1/2;
+        background-color: purple;
+    }
+
+    #center {
+        grid-row: 2;
+        grid-column: 2/4;
+        background-color: pink;
+    }
+
+    #right {
+        grid-row: 2;
+        grid-column: 4/5;
+        background-color: purple;
+    }
+</style>
+
+<body>
+    <div id="header">HEAD</div>
+    <div id="left" class="column">left</div>
+    <div id="center" class="column">center</div>
+    <div id="right" class="column">right</div>
+    <div id="footer">FOOT</div>
+</body>
+
+</html>

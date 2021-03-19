@@ -136,3 +136,84 @@ console.log("---------------");
 console.log(obj == 'test')
 console.log("---------------");
 console.log(obj === 'test')
+
+
+function fun(n, o) {
+    console.log(o);
+    return {
+        fun: function (m) {
+            return fun(m, n);
+        }
+    };
+}
+
+var a = fun(0); // ?
+a.fun(1); // ?
+a.fun(2); // ?
+a.fun(3); // ?
+var b = fun(0).fun(1).fun(2).fun(3); // ?
+var c = fun(0).fun(1); // ?
+c.fun(2); // ?
+c.fun(3); // ?
+
+
+for (var i = 0; i < 5; i++) {
+    setTimeout(function () {
+        console.log(i);
+    }, 0);
+}
+
+for (var i = 0; i < 5; i++) {
+    (function (j) {
+        setTimeout(function () {
+            console.log(j);
+        }, 0);
+    })(i);
+    // 这样更简洁
+    // setTimeout(function(j) {
+    //     console.log(j);
+    // }, 0, i);
+}
+
+
+function binarySearch(nums, start, end, target) {
+    let low = start, high = end;
+    while (low <= high) {
+        let mid = Math.floor((start + end) / 2);
+        if (mid > target) {
+            high = mid - 1;
+        } else {
+            low = mid;
+        }
+    }
+    return nums[mid];
+}
+
+var arr = [86, 1, 3, 2, 4, 5, 6, 7, 8, 9, 10, 11, 23, 44];
+
+binarySearch(arr, 0, arr.length, 6);
+
+
+var func1 = x => x;
+var func2 = x => { x };
+var func3 = x => ({ x });
+console.log(func1(1));
+console.log(func2(1));
+console.log(func3(1));
+
+
+function Per() { }
+Per.prototype = {
+    num1: 1000,
+    money: {
+        num2: 1000
+    },
+    buy: function () {
+        console.log(this.num1, this.money.num2)
+    }
+}
+var p1 = new Per();
+var p2 = new Per();
+p2.num1 = 0;
+p2.money.num2 = 0;
+p1.buy();

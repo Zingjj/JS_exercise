@@ -3,7 +3,7 @@
  * @Email: 932455732@qq.com
  * @Date: 2020-11-30 14:35:17
  * @Last Modified by: zing
- * @Last Modified time: 2020-12-10 16:45:37
+ * @Last Modified time: 2021-03-05 11:13:59
  * @Description: CH7 code
  */
 
@@ -72,6 +72,8 @@ function outputNumbers(count) {
 outputNumbers(4);//0 1 2 3 4
 // 使用私有作用域
 function outputNumbers(count) {
+    // 其实闭包就是函数内嵌套另一个函数
+    // 这里只不过是一个匿名函数而已
     (function () {
         // 这里面是块级作用域
         for (var i = 0; i < count; ++i) {
@@ -82,6 +84,16 @@ function outputNumbers(count) {
 }
 outputNumbers(4);
 
+// 下面的例子同样会报错
+function outputNumbers(count) {
+    function a() {
+        for (var i = 0; i < count; ++i) {
+            console.log(i);
+        }
+    };
+    console.log(i);// i is not defined
+}
+outputNumbers(4);
 /**
  * 为自定义类型创建私有变量和静态私有变量
  */
@@ -222,4 +234,3 @@ var application = function () {
     }
     return app;
 }
-  

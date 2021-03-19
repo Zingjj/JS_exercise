@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 在矩形的直角，两条边的样式要均分 */
+        /* 采用了边框的均分原理 */
+        .triangle {
+            margin-top: 50px;
+            width: 0px;
+            height: 0px;
+            border-top: 10px solid red;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid transparent;
+        }
+
+        .semi-circle {
+            margin-top: 50px;
+            width: 100px;
+            height: 50px;
+            background-color: pink;
+            border-radius: 50px 50px 0 0;
+            /*左上 右上 右下 左下 顺时针顺序*/
+        }
+
+        .circle {
+            margin-top: 50px;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            border-radius: 50px 50px 50px 50px;
+            /*左上 右上 右下 左下 顺时针顺序*/
+        }
+
+        .tixing {
+            margin-top: 50px;
+            width: 100px;
+            height: 50px;
+            border-top: 50px solid red;
+            border-right: 50px solid yellow;
+            border-bottom: 50px solid green;
+            border-left: 50px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="triangle"></div>
+    <div class="semi-circle"></div>
+    <div class="circle"></div>
+    <div class="tixing"></div>
+    <div class="tixing"></div>
+</body>
+
+</html>

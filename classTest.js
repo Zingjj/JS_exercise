@@ -79,6 +79,29 @@ car2.drive();
 //  ES6类的表示方法 扩展
 //  使用[xxx]来实现将表达式或者变量名作为属性名
 //  实现属性名可变化
-const foo = "zzz";
+const foo = "zing";
 const barz = { [foo]: "abc" };
 console.log(barz);
+
+// ES5与ES6的继承比较
+const bar = new Bar();//不会报错
+function Bar() {
+    Bar = 'Baz';
+    this.name = "111";
+    age = 12;// 不报错
+}
+const bar = new Bar();//Cannot access 'Bar' before initialization
+const baz = new Baz();
+console.log(Bar, bar);// Baz Bar { name: '111' }
+
+
+class Bar {
+    constructor() {
+        this.name = "111";
+        age = 12;//age is not defined
+        Bar = 'Baz';// Assignment to constant variable.
+    }
+}
+let bar = new Bar();
+
+

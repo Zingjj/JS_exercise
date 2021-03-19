@@ -4,7 +4,8 @@
  * @Date: 2021-03-02 16:46:16
  * @Last Modified by: zing
  * @Last Modified time: 2021-03-02 21:10:25
- * @Description: 节流函数（优化高频率执行的函数的一种方法）在每个时间段n里，最多只允许运行一次。
+ * @Description: 节流函数（优化高频率执行的函数的一种方法）
+ * 在每个时间段n里，最多只允许运行一次。
  * 思路：第一次调用时记录时间戳，之后每次运行时都与上一次调用时时间戳比较差值，当差值>=某个值时才执行
  */
 function throttle(action, delay) {
