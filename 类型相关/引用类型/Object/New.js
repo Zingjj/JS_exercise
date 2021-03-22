@@ -25,3 +25,6 @@ function myNew2(_constructor, ...args) {
     _constructor.apply(obj, args);
     return obj;
 }
+function myNew(_constructor,...args) {
+    let 
+}

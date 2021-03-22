@@ -197,9 +197,9 @@ binarySearch(arr, 0, arr.length, 6);
 var func1 = x => x;
 var func2 = x => { x };
 var func3 = x => ({ x });
-console.log(func1(1));
-console.log(func2(1));
-console.log(func3(1));
+console.log(func1(1)); // 1
+console.log(func2(1)); // undefined
+console.log(func3(1)); // { x:1 }
 
 
 function Per() { }
@@ -216,4 +216,4 @@ var p1 = new Per();
 var p2 = new Per();
 p2.num1 = 0;
 p2.money.num2 = 0;
-p1.buy();
+p1.buy(); // 1000 0
