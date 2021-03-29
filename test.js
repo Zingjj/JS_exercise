@@ -217,3 +217,6 @@ var p2 = new Per();
 p2.num1 = 0;
 p2.money.num2 = 0;
 p1.buy(); // 1000 0
+
+console.log(0.2 + 0.1);
+console.log(55.1 + 55.2);

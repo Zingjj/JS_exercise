@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器</title>
+</head>
+
+<body>
+    <button id="myBtn">clickMe</button>
+</body>
+<script>
+    let btn = document.getElementById("myBtn");
+    // btn.onclick = function () {
+    //     let startTime = Date.now();
+    //     setTimeout(() => {
+    //         console.log("经过了", Date.now() - startTime);
+    //     }, 2000);
+    // }
+    // btn.onclick = function () {
+    //     setTimeout(() => {
+    //         console.log("di");
+    //         setTimeout(arguments.callee, 1000);
+    //     }, 1000)
+    // }
+    btn.addEventListener("click", handler, false)
+    function handler() {
+        setTimeout(() => {
+            console.log("di");
+            setTimeout(arguments.callee, 1000);
+        })
+    }
+</script>
+
+</html>

@@ -3,16 +3,18 @@
  * @Email: 932455732@qq.com
  * @Date: 2021-03-03 16:14:31
  * @Last Modified by: zing
- * @Last Modified time: 2021-03-03 17:09:18
+ * @Last Modified time: 2021-03-29 17:04:36
  * @Description: 深拷贝相关
  */
+let sym = Symbol("state");
 let test = {
     myObj: {
         firstName: "Jia",
         familyName: "Zhu",
     },
     friend: ["A", "B"],
-    age: 20
+    age: 20,
+    [sym]: "success"
 }
 console.log(test);
 
@@ -40,7 +42,11 @@ function deepCopy(val) {
     if (typeof val !== "object") return val;
     let copy = val instanceof Array ? [] : {};
     for (let key in val) {
+        // 无法检测到symbol
         if (val.hasOwnProperty(key)) {
+            // if (Reflect.ownKeys(val)) {
+            // Reflect.ownKeys(val)=
+            // Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))
             // 如果该属性亦为object，则需递归对该属性进行深拷贝
             copy[key] = typeof val[key] === "object" ? deepCopy(val[key]) : val[key];
         }

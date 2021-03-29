@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* #myBfc { */
+    /* background-color: rebeccapurple; */
+    /* border: red solid 2px; */
+    /* 触发BFC的几种方式 */
+    /* 其中overflow:hidden和display:flex父元素宽度会撑到最大 */
+    /* 其余的父级元素宽度与子元素宽度相同 */
+    /* overflow: hidden; */
+    /* float: left; */
+    /* position: absolute; */
+    /* position: fixed; */
+    /* display: inline-block; */
+    /* display: table-cell; */
+    /* display: flex; */
+    /* } */
+
+    /* 使用伪元素 */
+    #myBfc::after {
+        border: red solid 2px;
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #content {
+        float: left;
+        width: 200px;
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <div id="myBfc">
+        <div id="content">
+            我是子元素，我包含一些文字
+        </div>
+    </div>
+</body>
+
+</html>

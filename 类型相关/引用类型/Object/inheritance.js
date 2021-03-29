@@ -20,7 +20,7 @@ console.log(instance.getSuperValue());//false 说明获得了从父类那里继�
 console.log(instance.getSubValue());//true
 
 //测试原型链实现继承的问题
-//引用类型的原型属性被所有实力共享
+//引用类型的原型属性被所有实例共享
 //instance1与instance2共享things数组
 var instance1 = new SubType();
 instance1.things.push('sky');
@@ -53,8 +53,8 @@ var instance2 = new SubType(20);
 instance2.sayAge();
 console.log(instance2.color);
 // 问题
-
-
+// 方法在构造函数中定义，无法复用（不同实例上的同名函数都不是一个）
+// ↓ 解决办法
 /**
  * 组合继承
  */

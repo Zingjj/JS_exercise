@@ -8,29 +8,13 @@
     <title>Document</title>
 </head>
 <style>
-    body {
-        min-width: 550px;
-        font-weight: bold;
-        font-size: 20px;
-    }
-
-    #header,
-    #footer {
-        background-color: wheat;
-        text-align: center;
-        height: 60px;
-        line-height: 60px;
-    }
-
-
     #container {
         display: flex;
     }
 
     #container .column {
+        height: 400px;
         text-align: center;
-        height: 300px;
-        line-height: 300px;
     }
 
     #center {
@@ -44,19 +28,17 @@
     }
 
     #right {
-        width: 150px;
-        background-color: purple;
+        width: 200px;
+        background-color: salmon;
     }
 </style>
 
 <body>
-    <div id="header">HEAD</div>
     <div id="container">
-        <div id="left" class="column">left</div>
-        <div id="center" class="column">center</div>
-        <div id="right" class="column">right</div>
+        <div id="left" class="column"></div>
+        <div id="center" class="column"></div>
+        <div id="right" class="column"></div>
     </div>
-    <div id="footer">FOOT</div>
 </body>
 
 </html>

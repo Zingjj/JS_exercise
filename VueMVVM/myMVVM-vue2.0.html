@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的MVVM实现</title>
+</head>
+
+<body>
+    <div id="my"></div>
+    <div id="app">
+        <input type="text" v-model="username" />
+        <p>{{ username }}</p>
+    </div>
+    <script>
+        // 模拟el
+        let el = document.getElementById("app");
+        // 模拟data对象，为什么data返回是个函数？
+        let data = {
+            _username: "Tom"
+        };
+        let template = el.innerHTML;
+        function render() {
+            // 初始渲染先替换DOM里面的模板
+            el.innerHTML = template.replace(/{{\s+[\w.]+\s+}}/g, (str) => {
+                str = str.slice(2, str.length - 2).trim()
+                return data[str];
+            })
+            // 双向绑定
+            // 获取所有带v-model属性的input元素
+            Array.from(el.getElementsByTagName("input"))
+                .filter(element => element.getAttribute("v-model"))
+                .forEach(input => {
+                    // 为每个input元素进行双向绑定
+                    let bindData = input.getAttribute("v-model");
+                    // 监听input事件，动态地将input数据传入data
+                    input.addEventListener("input", function () {
+                        data[bindData] = this.value;
+                    }, false)
+                    // 将data数据绑定到dom
+                    input.value = data[bindData];
+                });
+        }
+        Object.defineProperty(data, "username", {
+            enumerable: true,
+            configurable: true,
+            get() {
+                return this._username;
+            },
+            set(value) {
+                this._username = value;
+                render();
+            }
+        });
+    </script>
+</body>
+
+</html>

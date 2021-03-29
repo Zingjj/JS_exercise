@@ -3,7 +3,7 @@
  * @Email: 932455732@qq.com
  * @Date: 2021-03-15 11:01:43
  * @Last Modified by: zing
- * @Last Modified time: 2021-03-15 11:07:48
+ * @Last Modified time: 2021-03-25 10:34:15
  * @Description: 类型检测工具 typeof与instanceof
  */
 
@@ -22,8 +22,25 @@ let no = null, un = undefined;
 console.log(arr instanceof Array);// true
 console.log(arr instanceof Object);// true
 console.log(typeof arr);// object
-console.log(typeof fn);// funnction
+console.log(typeof fn);// function
 console.log(typeof sym);// symbol
 console.log(typeof flag);// boolean
-console.log(typeof no);// null
+console.log(typeof no);// object
 console.log(typeof un);// undefined
+
+// 以下全部输出[Boolean: false]
+let test1 = new Boolean()
+console.log(test1);
+let test2 = new Boolean(0);
+console.log(test2);
+let test3 = new Boolean(null);
+console.log(test3);
+let test4 = new Boolean("");
+console.log(test4);
+let test5 = new Boolean(undefined);
+console.log(test5);
+
+console.log(NaN === NaN); // F
+console.log(NaN == NaN); // F
+console.log(Object.is(NaN, NaN)); // T
+console.log(Object.prototype.toString.call(null));

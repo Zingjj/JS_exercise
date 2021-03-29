@@ -5,17 +5,17 @@
 function myNew(_constructor, ...args) {
     let obj = new Object();
     obj.__proto__ = _constructor.prototype;
-    _constructor.apply(obj, args);
-    return obj;
+    let ans = _constructor.apply(obj, args);
+    return typeof ans === "undefined" ? obj : ans;
 }
 
 function Person(name) {
     this.name = name;
     // 不能返回一个引用类型 
-    // return [1, 2, 3];
+    return [1, 2, 3];
 }
 let obj = myNew(Person, "Tom");
-let obj1 = new Person();
+let obj1 = new Person("lll");
 console.log(obj, obj1);
 
 
@@ -25,6 +25,23 @@ function myNew2(_constructor, ...args) {
     _constructor.apply(obj, args);
     return obj;
 }
-function myNew(_constructor,...args) {
-    let 
+
+let obj1 = {};
+let obj2 = Object.create(null);
+console.log(obj1.__proto__.constructor, obj2.__proto__);
+console.log(Object.__proto__ === Function.prototype); // true
+
+
+let obj = {
+    name: "123",
+    age: 19,
+    sayName: function () {
+        console.log(this.name);
+        return "yes";
+    }
 }
+let obj2 = {
+    name: "aaa",
+}
+let ans = obj.sayName.call(obj2);
+console.log(ans);
