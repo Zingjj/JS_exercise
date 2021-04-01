@@ -19,7 +19,12 @@ Father.prototype.sayName = function () {
 child.sayName();
 console.log(child instanceof Father);// true
 
-// 实现一个instanceof
+/**
+ * 实现一个instanceof
+ * @param {*} a 
+ * @param {*} b 
+ * @returns 
+ */
 // 递归地去原型链上查找
 function _instanceof(a, b) {
     if (a.__proto__ === b.prototype) return true;

@@ -8,9 +8,10 @@
 // 7.ES6 class关键字
 
 // 原型链继承
-// 缺点不能传参，所有子类实例会共享！父类引用类型属性
+// 缺点不能传参，所有子类实例会共享父类引用类型属性！！
 function SuperType() {
     this.color = ["red", "blue"];
+    this.name = "tom"
 }
 function SubType() {
     this.subProperty = "son"
@@ -21,6 +22,8 @@ let subType1 = new SubType();
 let subType2 = new SubType();
 subType1.color.push("yellow");
 console.log(subType2.color);// [ 'red', 'blue', 'yellow' ]
+subType1.name = "lll";
+console.log(subType2.name); // tom 只有引用类型数据是共享的
 
 // 借用构造函数
 // 解决了原型链继承中存在的两个问题
@@ -105,6 +108,7 @@ let originObj = {
     age: 19,
 }, obj = inherit(originObj);
 obj.saySomething();// 19
+
 // 寄生组合式继承
 // 只调用了一次SuperType构造函数
 // 原型链保持不变，可以正常使用instanceof 和isPrototypeOf()
@@ -135,3 +139,54 @@ SubType.prototype.sayAge = function () {
 let subType = new SubType("tom", 19);
 subType.saySomething();// tom
 subType.sayAge();// 19
+
+// ES6实现继承
+class SuperType {
+    constructor(name) {
+        this.name = name;
+    }
+    sayHi() {
+        console.log(this.name);
+    }
+}
+class SubType extends SuperType {
+    constructor(name, age, sex) {
+        super(name);// 调用父类constructor，必须在使用this之前调用！！！
+
+        this.age = age;
+        this.sex = sex;
+    }
+    saySomething() {
+        super.sayHi();
+        console.log(this.age);
+    }
+}
+let subType = new SubType("tom", 19, 1);
+// console.log(SubType.prototype.constructor);// SubType
+subType.saySomething();
+
+// 尝试一下Object.getPrototypeOf()
+class A {
+    constructor() {
+
+    }
+}
+class B extends A {
+    constructor() {
+        super();
+    }
+}
+class C extends B {
+    constructor(age) {
+        super();
+        this.age = age;
+    }
+}
+console.log(C.prototype);
+console.log(Object.getPrototypeOf(B));
+console.log(C instanceof B);
+
+let obj = new C();
+console.log(obj.constructor);
+let newObj = new obj.constructor(19);
+console.log(newObj.age);

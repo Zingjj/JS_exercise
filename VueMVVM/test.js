@@ -37,3 +37,4 @@ console.log(obj2);
 for (let val of iterObj(obj2)) {
     console.log(val);
 }
+

@@ -3,24 +3,20 @@
  * @Email: 932455732@qq.com
  * @Date: 2021-03-02 16:46:16
  * @Last Modified by: zing
- * @Last Modified time: 2021-03-02 21:10:25
+ * @Last Modified time: 2021-03-31 14:16:50
  * @Description: 节流函数（优化高频率执行的函数的一种方法）
  * 在每个时间段n里，最多只允许运行一次。
  * 思路：第一次调用时记录时间戳，之后每次运行时都与上一次调用时时间戳比较差值，当差值>=某个值时才执行
  */
-function throttle(action, delay) {
-    let args, context;
-    let lastRun = 0;
+function method(func, wait) {
+    let lastTime = 0;
     return function () {
-        let now = Date.now(), elapsed = now - lastRun;
-        console.log(lastRun, now);
-        args = arguments;
-        context = this;
-        if (elapsed >= delay) {
-            action.apply(context, args);
-            lastRun = now;
+        let now = Date.now(), time = now - lastTime;
+        if (time >= wait) {
+            func.call(this, ...arguments);
+            lastTime = now;
         }
-    };
+    }
 }
 // function throttle(action, delay) {
 //     let timeout = null;

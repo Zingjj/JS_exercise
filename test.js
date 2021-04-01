@@ -220,3 +220,26 @@ p1.buy(); // 1000 0
 
 console.log(0.2 + 0.1);
 console.log(55.1 + 55.2);
+
+function binarySearch(arr, target) {
+    let low = 0, high = arr.length - 1;
+    while (low <= high) {
+        let mid = low + Math.floor((high - low) / 2);
+        if (target > arr[mid]) {
+            // 可能在头半段
+            if (target >= arr[low] && arr[low] > arr[high]) {
+                high = mid - 1;
+            }
+            // 在右半段
+            else {
+                low = mid + 1;
+            }
+        } else if (target < arr[mid]) {
+            high = mid - 1;
+        } else {
+            return mid;
+        }
+    }
+    return -1;
+}
+console.log(binarySearch([86, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 23, 44], 44));

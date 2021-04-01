@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #main {
+        width: 500px;
+        height: 300px;
+        background-color: royalblue;
+    }
+
+    #main p {
+        text-align: center;
+    }
+
+    #list {
+        list-style: none;
+        margin-left: 50px;
+        overflow: hidden;
+    }
+
+    #list li {
+        display: inline;
+        line-height: 40px;
+        width: 100px;
+        margin-left: 5px;
+        float: left;
+        background-color: black;
+        color: whitesmoke;
+        text-align: center;
+    }
+
+    li:hover {
+        cursor: pointer;
+    }
+
+    #panel {
+        width: 350px;
+        height: 160px;
+        margin: auto;
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <div id="main">
+        <p>Hello World</p>
+        <ul id="list">
+            <li>angular</li>
+            <li>vue</li>
+            <li>react</li>
+        </ul>
+        <div id="panel"></div>
+    </div>
+    <script>
+        window.onload = function () {
+            window.onpopstate = function (event) {
+                console.log(event);
+            }
+            window.onhashchange = function (event) {
+                console.log("catch HashChange event");
+            }
+
+            document.querySelector("#list").addEventListener("click", function (event) {
+                if (event.target.nodeName == "LI") {
+                    let content = event.target.innerHTML;
+                    let _newState = {
+                        url: location.origin + "/" + content,
+                        title: document.title,
+                        state: content
+                    };
+                    // 调用replaceState方法跳转
+                    window.history.pushState(_newState, "", "/" + content);
+                    // console.log("you have change the router to:", content);
+                    let panel = document.getElementById("panel");
+                    panel.innerHTML = `you have change the router to: <strong> ${content} </strong>`;
+                }
+            }, false)
+        }
+    </script>
+</body>
+
+</html>
