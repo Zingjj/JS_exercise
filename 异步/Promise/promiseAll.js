@@ -11,7 +11,6 @@ function myPromiseAll(promises) {
     return new Promise((resolve, reject) => {
         let resultCount = 0, promiseLen = promises.length;
         let results = new Array(promiseLen); // 用于存放返回结果
-
         for (let i = 0; i < promiseLen; ++i) {
             promises[i].then(res => {
                 resultCount++;
@@ -24,7 +23,5 @@ function myPromiseAll(promises) {
                 reject(err);
             })
         }
-
-
     })
 }

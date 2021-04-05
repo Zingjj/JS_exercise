@@ -1,7 +1,3 @@
-const { italic } = require("chalk");
-const { request } = require("node:http");
-const { type } = require("node:os");
-
 function* helloWordGenerator() {
     yield "hello";
     yield "world";
@@ -9,7 +5,9 @@ function* helloWordGenerator() {
 }
 let hw = helloWordGenerator();
 console.log(hw.next()); //{ value: 'hello', done: false }
-
+// for (let next of hw) {
+//     console.log(next);
+// }
 
 // 函数f在赋值给变量时就会执行，但f是一个generator函数
 // 于是就变成只有在调用next()时才会执行
